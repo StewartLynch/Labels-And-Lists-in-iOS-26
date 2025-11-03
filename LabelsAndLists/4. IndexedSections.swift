@@ -22,10 +22,8 @@ struct IndexedSections: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading ) {
-                Text("Indexed Sections")
-            }
-            .navigationTitle(navManager.selectedTab.rawValue)
+            Text("Indexed Sections")
+                .navigationTitle(navManager.selectedTab.rawValue)
         }
     }
 }

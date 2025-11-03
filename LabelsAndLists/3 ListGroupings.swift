@@ -22,10 +22,8 @@ struct ListGroupings: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading ) {
-                Text("List Groupings")
-            }
-            .navigationTitle(navManager.selectedTab.rawValue)
+            Text("List Groupings")
+                .navigationTitle(navManager.selectedTab.rawValue)
         }
     }
 }

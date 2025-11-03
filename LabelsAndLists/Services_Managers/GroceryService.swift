@@ -1,7 +1,7 @@
 //
 //----------------------------------------------
 // Original project: LabelsAndLists
-// by  Stewart Lynch on 2025-09-05
+// by  Stewart Lynch on 2025-11-03
 //
 // Follow me on Mastodon: https://iosdev.space/@StewartLynch
 // Follow me on Threads: https://www.threads.net/@stewartlynch
@@ -15,20 +15,4 @@
 // Copyright © 2025 CreaTECH Solutions. All rights reserved.
 
 
-import SwiftUI
-
-struct ListsUpdatesView: View {
-    @Environment(NavManager.self) var navManager
-    
-    var body: some View {
-        NavigationStack {
-            Text("Lists Updates")
-            .navigationTitle(navManager.selectedTab.rawValue)
-        }
-    }
-}
-
-#Preview {
-    ListsUpdatesView()
-        .environment(NavManager())
-}
+import Foundation
