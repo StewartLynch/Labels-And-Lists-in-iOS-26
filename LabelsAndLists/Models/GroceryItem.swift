@@ -1,6 +1,6 @@
 //
 //----------------------------------------------
-// Original project: LabelsAndLists
+// Original project: LandLDev
 // by  Stewart Lynch on 2025-11-02
 //
 // Follow me on Mastodon: https://iosdev.space/@StewartLynch
@@ -18,20 +18,19 @@
 
 import SwiftUI
 
-struct GroceryItem: Identifiable, Hashable {
+struct GroceryItem: Identifiable {
     let id = UUID()
     let name: String
     let quantity: Int
     let category: Category
     
-    enum Category: String, CaseIterable, Identifiable, Hashable {
+    enum Category: String {
         case produce = "Produce"
         case bakery = "Bakery"
         case dairy = "Dairy"
         case pantry = "Pantry"
         case beverages = "Beverages"
         
-        var id: Self { self }
         var systemImage: String {
             switch self {
             case .produce:
@@ -41,7 +40,7 @@ struct GroceryItem: Identifiable, Hashable {
             case .dairy:
                 "cart.fill"
             case .pantry:
-                "shippingbox.fill"           // suggests stored dry goods
+                "shippingbox.fill"
             case .beverages:
                 "waterbottle.fill"
             }
