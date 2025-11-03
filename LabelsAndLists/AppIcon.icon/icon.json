@@ -1,0 +1,43 @@
+{
+  "fill" : {
+    "automatic-gradient" : "extended-srgb:0.00000,0.47843,1.00000,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "image-name" : "PNG image-4E98-A10C-3C-0.png",
+          "name" : "PNG image-4E98-A10C-3C-0",
+          "position" : {
+            "scale" : 2.29,
+            "translation-in-points" : [
+              7.6328125,
+              55.84375
+            ]
+          }
+        }
+      ],
+      "position" : {
+        "scale" : 1,
+        "translation-in-points" : [
+          6.98828125,
+          3.05078125
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}
