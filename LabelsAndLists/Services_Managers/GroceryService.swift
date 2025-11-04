@@ -19,7 +19,7 @@ import Foundation
 import Playgrounds
 
 #Playground {
-    let dict = GroceryService().groupedFilteredBy("m")
+    let _ = GroceryService().groupedFilteredBy("m")
 }
 
 @Observable
