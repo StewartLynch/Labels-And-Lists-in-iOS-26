@@ -19,11 +19,35 @@ import SwiftUI
 
 struct IndexedSections: View {
     @Environment(NavManager.self) var navManager
+    @State private var service = GroceryService()
     
     var body: some View {
         NavigationStack {
-            Text("Indexed Sections")
-                .navigationTitle(navManager.selectedTab.rawValue)
+            List {
+                ForEach(service.itemsGroupedByAlphabet.keys.sorted(), id:\.self) { letter in
+                    if let items = service.itemsGroupedByAlphabet[letter] {
+                        Section {
+                            ForEach(items) { item in
+                                VStack(alignment: .leading) {
+                                    Text("\(item.name) (\(item.quantity))")
+                                        .font(.title2)
+                                    Text("\(Image(systemName: item.category.systemImage)) \(item.category.rawValue)")
+                                }
+                            }
+                        } header: {
+                            if !items.isEmpty {
+                                Text(letter)
+                                    .font(.largeTitle.bold())
+                            }
+                        }
+                        .sectionIndexLabel(letter)
+                    }
+                }
+            }
+            .padding()
+            .listStyle(.plain)
+            .navigationTitle(navManager.selectedTab.rawValue)
+            .toolbarTitleDisplayMode(.inlineLarge)
         }
     }
 }

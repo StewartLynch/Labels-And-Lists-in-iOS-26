@@ -19,11 +19,23 @@ import SwiftUI
 
 struct ListsUpdatesView: View {
     @Environment(NavManager.self) var navManager
-    
+    @State private var service = GroceryService()
+    @State private var searchField = ""
     var body: some View {
         NavigationStack {
-            Text("Lists Updates")
+            List {
+                ForEach(service.itemsFilteredBy(searchField)) { item in
+                    Label(item.name, systemImage: item.category.systemImage)
+                        .font(.title)
+                        .labelIconToTitleSpacing(30)
+                        .listItemTint(item.category.color)
+                }
+            }
+            .listStyle(.plain)
+            .padding()
             .navigationTitle(navManager.selectedTab.rawValue)
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .searchable(text: $searchField, placement: .navigationBarDrawer(displayMode: .always),prompt: "Filter by name")
         }
     }
 }

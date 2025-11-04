@@ -1,6 +1,6 @@
 # Labels Lists and More in os26
 
-![AppIcon128](Images/AppIcon128.png) This is the Starter project for the Labels, Lists and more in oS26
+![AppIcon128](Images/AppIcon128.png) This is the completed source code for the Labels, Lists and more in oS26 video
 
 Release Date: December 14, 2025
 

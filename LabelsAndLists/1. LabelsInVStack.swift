@@ -19,11 +19,32 @@ import SwiftUI
 
 struct LabelsInVStack: View {
     @Environment(NavManager.self) var navManager
+    @State private var service = GroceryService()
     
     var body: some View {
         NavigationStack {
-            Text("Labels in VStacks")
-                .navigationTitle(navManager.selectedTab.rawValue)
+            VStack(alignment: .leading) {
+                ForEach(service.groceryItems) { item in
+                    HStack {
+//                        Label(item.name, systemImage: item.category.systemImage)
+//                            .font(.title)
+                        Label {
+                            Text(item.name)
+                        } icon: {
+                            Image(systemName: item.category.systemImage)
+                                .foregroundStyle(item.category.color)
+                        }
+                        .font(.title)
+                        Spacer()
+                        Text(item.quantity, format: .number)
+                    }
+                    .labelReservedIconWidth(40)
+                }
+                Spacer()
+            }
+            .padding()
+            .navigationTitle(navManager.selectedTab.rawValue)
+            .toolbarTitleDisplayMode(.inlineLarge)
         }
     }
 }

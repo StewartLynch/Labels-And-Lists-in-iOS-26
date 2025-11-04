@@ -19,11 +19,56 @@ import SwiftUI
 
 struct ListGroupings: View {
     @Environment(NavManager.self) var navManager
+    @State private var service = GroceryService()
+    @State private var searchField = ""
     
     var body: some View {
         NavigationStack {
-            Text("List Groupings")
-                .navigationTitle(navManager.selectedTab.rawValue)
+            List {
+                let dict = service.groupedFilteredBy(searchField)
+                ForEach(dict.keys.sorted {$0.rawValue < $1.rawValue}, id: \.self) { category in
+                    if let items = dict[category] {
+                        Section {
+                            ForEach(items) { item in
+                                Text(item.name)
+                                    .badge(item.quantity)
+                            }
+                        } header: {
+//                            Label(category.rawValue, systemImage: category.systemImage)
+                            LabeledContent {
+                                Text(category.rawValue)
+                                    .foregroundStyle(Color(.label))
+                            } label: {
+                                Image(systemName: category.systemImage)
+                                    .foregroundStyle(category.color)
+                            }
+                            .font(.title3.bold())
+                            .fixedSize(horizontal: true, vertical: false)
+                        }
+
+                    }
+                }
+            }
+            .background(.orange.opacity(0.4))
+            .toolbarBackgroundVisibility(.visible, for: .navigationBar)
+            .toolbarBackground(.orange, for: .navigationBar)
+            .scrollContentBackground(.hidden)
+            .scrollEdgeEffectStyle(.soft, for: .all)
+            .listRowSpacing(5)
+            .searchable(text: $searchField, prompt: "Filter on product name")
+            .navigationTitle(navManager.selectedTab.rawValue)
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button(role: .close) {
+                        
+                    }
+                    Button(role: .destructive) {
+                        
+                    }
+                }
+                .sharedBackgroundVisibility(.hidden)
+            }
         }
     }
 }
