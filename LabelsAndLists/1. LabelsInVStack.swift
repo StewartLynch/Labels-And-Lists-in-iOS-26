@@ -22,10 +22,8 @@ struct LabelsInVStack: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading ) {
-                Text("Labels in VStacks")
-            }
-            .navigationTitle(navManager.selectedTab.rawValue)
+            Text("Labels in VStacks")
+                .navigationTitle(navManager.selectedTab.rawValue)
         }
     }
 }

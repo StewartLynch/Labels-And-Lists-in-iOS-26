@@ -22,10 +22,8 @@ struct ListsUpdatesView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading ) {
-                Text("Lists Updates")
-            }
-            .navigationTitle(navManager.selectedTab.rawValue)
+            Text("Lists Updates")
+                .navigationTitle(navManager.selectedTab.rawValue)
         }
     }
 }
